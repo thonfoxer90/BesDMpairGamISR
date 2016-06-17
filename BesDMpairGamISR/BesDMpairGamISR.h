@@ -21,7 +21,7 @@ public:
   StatusCode finalize();  
 
 private:
-
+	//Comment test
   //!-Parameters to be read from jobOptions file
   bool m_MC_Analysis;
   bool m_MC_AllTrue;
