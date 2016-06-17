@@ -1,0 +1,43 @@
+#include "$ROOTIOROOT/share/jobOptions_ReadRec.txt"
+#include "$VERTEXFITROOT/share/jobOptions_VertexDbSvc.txt"
+#include "$MAGNETICFIELDROOT/share/MagneticField.txt"
+#include "$ABSCORROOT/share/jobOptions_AbsCor.txt"
+
+ApplicationMgr.DLLs += {"MyAnalysis"};
+ApplicationMgr.TopAlg += { "MyAnalysis" };
+
+MyAnalysis.MonteCarloAnalysis = true;
+MyAnalysis.MonteCarloAllTrue = true;
+MyAnalysis.WithHistograms = true;
+MyAnalysis.CenterOfMassEnergy = 3.08;
+MyAnalysis.BeamCrossingAngle = 0.011;
+
+MyAnalysis.GammaMinEnergyBarrel = 0.025;
+MyAnalysis.GammaMinEnergyEndCap = 0.05;
+MyAnalysis.GammaMinTime = 0;
+MyAnalysis.GammaMaxTime = 14;
+MyAnalysis.GammaClosestChargeCut = 20.0;
+MyAnalysis.GammaClosestPhotonCut = 20.0;
+
+MyAnalysis.PionMaxChiSq = 50.;
+
+MyAnalysis.ChargedVertexMaxR0Cut = 1.0;
+MyAnalysis.ChargedVertexMaxZ0Cut = 5.0;
+
+
+// Input REC or DST file name 
+//EventCnvSvc.digiRootInputFile = {"/home/redmer/boss/Generator/Ekhara/Ekhara-00-00-01/run/EtaFF8.dst"};
+//EventCnvSvc.digiRootInputFile = {"BesTwogam.dst"};
+//EventCnvSvc.digiRootInputFile = {"ntuple_bab_nlo_1.dst"};
+//EventCnvSvc.digiRootInputFile = {"/data/work/kpha1/hafner/test/nlo_dst_ntuples/ntuple_bab_nlo_0.dst"};
+EventCnvSvc.digiRootInputFile = {"/data/work/kphpbb/honig/Data/NTuples/babnlo/nlo_dst_ntuples/ntuple_bab_nlo_600.dst"};
+
+// Set output level threshold (2=DEBUG, 3=INFO, 4=WARNING, 5=ERROR, 6=FATAL )
+MessageSvc.OutputLevel = 5;
+
+// Number of events to be processed (default is 10)
+ApplicationMgr.EvtMax = -1;
+
+ApplicationMgr.HistogramPersistency = "ROOT";
+NTupleSvc.Output = { "FILE1 DATAFILE='MCbab1_ntuple.root' OPT='NEW' TYP='ROOT'" };
+HistogramPersistencySvc.OutputFile = "MCbab1_histo.root";

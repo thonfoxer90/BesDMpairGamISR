@@ -1,0 +1,58 @@
+package BesDMpairGamISR
+
+author GARILLON Brice <bgarillo@uni-mainz.de>
+
+use BesPolicy        BesPolicy-*
+
+use GaudiInterface   GaudiInterface-*   External
+use MdcGeomSvc MdcGeomSvc-* Mdc
+use EventWriter	EventWriter-* EvtPreSelect
+use MdcNavigation MdcNavigation-* Mdc
+
+use DstEvent	 DstEvent-*    Event
+use EventModel       EventModel-*       Event
+use EvtRecEvent      EvtRecEvent-*      Event
+use ParticleID       ParticleID-*       Analysis
+use MdcRawEvent  MdcRawEvent-* Mdc
+use McTruth      McTruth-*     Event
+use ReconEvent   ReconEvent-*  Event
+use DTagTool     DTagTool-*    Analysis
+use BesROOT      BesROOT-*     External
+use BesDChain        BesDChain-*        Event
+
+use DumpDecayTreeAlg	DumpDecayTreeAlg-*		Analysis
+#========  setup gaudi env         ============
+use GaudiInterface      GaudiInterface-*        External
+#use PI                  *                       LCG_Interfaces
+use BesCLHEP            *                       External
+use BesKernel			*						Control
+use PartPropSvc         *
+use CASTOR              *                       LCG_Interfaces
+#use ExHelloWorld        *                       BesExamples
+#=========  for Analysis   ============
+#use Analysis              Analysis-*
+#use AnalysisDemoAlg       AnalysisDemoAlg-*             Analysis
+#use BKlamsVTX             BKlamsVTX-00-*                Analysis
+#use GammaEtaAlg           GammaEtaAlg-00-*              Analysis/Physics
+#use KlamsTestAlg          KlamsTestAlg-00-*             Analysis/Physics
+#use RhopiAlg              RhopiAlg-00-*                 Analysis/Physics
+#use PipiJpsiAlg           PipiJpsiAlg-*              Analysis/Physics/PsiPrime
+use AbsCor                AbsCor-*                   Analysis/PhotonCor
+#use Telesis               Telesis-00-*                  Analysis
+use VertexFit             VertexFit-*                   Analysis
+
+#========   for DST                ============
+use RootIO         RootIO-*          Event
+use RootHistCnv 	v*
+
+
+
+
+#========   for  MagneticField     ============
+use MagneticField MagneticField-*
+#========   for  counter event and run nuber  ============
+use RunEventNumberAlg  RunEventNumberAlg-*  Event
+use Pi0EtaToGGRecAlg Pi0EtaToGGRecAlg-* Reconstruction
+use DTagAlg DTagAlg-* Reconstruction
+apply_pattern component_library 
+library BesDMpairGamISR *.cxx components/*.cxx
